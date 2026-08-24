@@ -307,7 +307,8 @@ namespace SubRenamer
             var extension = GetFullExtension(file);
             var filename = file.Name.Replace(extension, "");
 
-            if(getSeplitorCount(filename) > 2) {
+            if (getSeplitorCount(filename) > 2)
+            {
                 return Split(filename);
             }
 
@@ -453,21 +454,33 @@ namespace SubRenamer
         public static List<string> Split(string name)
         {
             List<string> result = new List<string>();
-            string name2 = Replace(name);
+            string name2 = Replace(name).Trim();
             char[] ca = name2.ToCharArray();
-            for (int i = 0; i < ca.Length; i++)
+            int i = 0;
+            while (i < ca.Length)
             {
                 if (ca[i] == ' ')
                 {
-                    try
+                    if (result.Count == 0 && i > 0)
                     {
-                        int end = FindMatchingPos(ca, i, ' ');
+                        result.Add(name2.Substring(0, i));
+                    }
+
+                    int end = FindMatchingPos(ca, i, ' ');
+                    if (end > 0)
+                    {
                         result.Add(name2.Substring(i + 1, end - i - 1));
+                        i = end;
                     }
-                    catch
+                    else
                     {
-                        result.Add(name2.Substring(i));
+                        result.Add(name2.Substring(i + 1));
+                        break;
                     }
+                }
+                else
+                {
+                    i += 1;
                 }
             }
             return result;
@@ -506,7 +519,8 @@ namespace SubRenamer
                     right = left;
                     break;
                 default:
-                    throw new Exception("cannot get matching char on RIGHT");
+                    right = left;
+                    break;
             }
             int count = 0;
             for (int i = begin + 1; i < ca.Length; i++)
@@ -528,7 +542,7 @@ namespace SubRenamer
                     count++;
                 }
             }
-            throw new Exception("cannot find matching pos");
+            return -1;
         }
 
         /// <summary>
