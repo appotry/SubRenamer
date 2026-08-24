@@ -165,4 +165,8 @@
     <value>加载完成</value>
     <comment>load_path_complete</comment>
   </data>
+  <data name="load_path_error" xml:space="preserve">
+    <value>目录加载失败，请检查</value>
+    <comment>load_path_error</comment>
+  </data>
 </root>

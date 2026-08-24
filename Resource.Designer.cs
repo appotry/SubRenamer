@@ -88,6 +88,15 @@ namespace SubRenamer {
         }
         
         /// <summary>
+        ///   查找类似 目录加载失败，请检查 的本地化字符串。
+        /// </summary>
+        internal static string load_path_error {
+            get {
+                return ResourceManager.GetString("load_path_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 没有操作记录 的本地化字符串。
         /// </summary>
         internal static string no_rename_record {

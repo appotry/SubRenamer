@@ -876,36 +876,6 @@
   <data name="&gt;&gt;button_regex_panel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="button_resolve.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="button_resolve.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 3</value>
-  </data>
-  <data name="button_resolve.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 21</value>
-  </data>
-  <data name="button_resolve.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="button_resolve.Text" xml:space="preserve">
-    <value>分析文件名</value>
-  </data>
-  <data name="button_resolve.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;button_resolve.Name" xml:space="preserve">
-    <value>button_resolve</value>
-  </data>
-  <data name="&gt;&gt;button_resolve.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_resolve.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;button_resolve.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="button_revoke.Location" type="System.Drawing.Point, System.Drawing">
     <value>274, 3</value>
   </data>
@@ -928,7 +898,7 @@
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;button_revoke.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -955,7 +925,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="button_name2" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="button_doRename" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="button_regex_panel" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="button_resolve" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="button_revoke" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,78,Absolute,109,Percent,50,Percent,50,Absolute,57,Absolute,89,Absolute,55" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="button_name2" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="button_doRename" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="button_regex_panel" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="button_revoke" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,78,Absolute,109,Percent,50,Percent,50,Absolute,57,Absolute,89,Absolute,55" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel_filelist.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>

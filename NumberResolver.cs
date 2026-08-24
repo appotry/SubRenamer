@@ -38,71 +38,6 @@ namespace SubRenamer
             }
         }
 
-        public static bool Resolve(Names names)
-        {
-            try
-            {
-                string[] strs = Names.GetStrArray(names.videos);
-                int len = strs[0].Length;
-                int i = 0;
-                for (; i < len; i++)            //检查第一个不一样的字符
-                {
-                    char c = strs[0][i];
-                    bool fl = false;
-                    foreach (string s in strs)
-                    {
-                        if (c != s[i])
-                        {
-                            fl = true;
-                            break;
-                        }
-                    }
-                    if (fl)
-                    {
-                        break;
-                    }
-                }
-                if (i >= len)
-                {
-                    return false;
-                }
-
-                foreach (Video video in names.videos)
-                {
-                    string s = video.File.Name;
-                    int j = i;
-                    for (; j < s.Length; j++)
-                    {
-                        if (!IsNumber(s[j]))
-                        {
-                            break;
-                        }
-                    }
-                    if (j == i)
-                    {
-                        continue;
-                    }
-
-                    string s2 = s.Substring(i, j - i);
-                    video.Num = s2;
-                }
-
-                return true;
-            }
-            catch (System.Exception)
-            {
-                return false;
-            }
-
-        }
-
-        private static bool IsNumber(char c)
-        {
-            return c >= '0' && c <= '9';
-        }
-
-
-
 
         /// <summary>
         /// 获取疑似集号的位置
@@ -165,14 +100,14 @@ namespace SubRenamer
             for (int i = 1; i < files.Count; i++)
             {
                 var curr_file = files[i];
-                var curr_splited_name = curr_file.Splited_filename;
-                double curr_splited_name_length = 0;
+                var curr_splited_name = curr_file.Splited_filename; //当前文件打散列名
+                double curr_splited_name_length = 0;//当前打散列名总长度
                 foreach (var item in curr_splited_name)
                 {
                     curr_splited_name_length += item.Length;
                 }
 
-                double match_group_rate = 0; //匹配度 = 对应位置相对元素数 / 总元素数
+                double match_group_rate = 0; //匹配度 = SUM(每列匹配度0~1 * 列长) / 总长度
                 int match_group_num = -1; //匹配组
 
                 for (int g_num = 0; g_num < result.Count; g_num++)
@@ -191,6 +126,7 @@ namespace SubRenamer
                             if (col < group_head_splited_name.Count)
                             {
                                 double _rate;
+                                //如果完全相等，分段匹配度=1。如果不相等，再算
                                 if (curr_splited_name[col] == group_head_splited_name[col]) _rate = 1;
                                 else _rate = CalculateWeightedSimilarity(curr_splited_name[col], group_head_splited_name[col]);
                                 total_match_rate += _rate * curr_splited_name[col].Length / curr_splited_name_length;

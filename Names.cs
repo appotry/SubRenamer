@@ -124,7 +124,6 @@ namespace SubRenamer
     internal class Names
     {
         public bool IsRegex { get; }
-        public bool Resolved { get; set; }
 
         public string path;
 

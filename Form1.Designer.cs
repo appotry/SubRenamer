@@ -64,7 +64,6 @@ namespace SubRenamer
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button_name2 = new System.Windows.Forms.Button();
             this.button_regex_panel = new System.Windows.Forms.Button();
-            this.button_resolve = new System.Windows.Forms.Button();
             this.button_revoke = new System.Windows.Forms.Button();
             this.panel_filelist = new System.Windows.Forms.Panel();
             this.panel_path = new System.Windows.Forms.Panel();
@@ -278,7 +277,6 @@ namespace SubRenamer
             this.tableLayoutPanel2.Controls.Add(this.button_name2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button_doRename, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.button_regex_panel, 6, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button_resolve, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.button_revoke, 4, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
@@ -295,13 +293,6 @@ namespace SubRenamer
             this.button_regex_panel.Name = "button_regex_panel";
             this.button_regex_panel.UseVisualStyleBackColor = true;
             this.button_regex_panel.Click += new System.EventHandler(this.Button_regex_panel_Click_1);
-            // 
-            // button_resolve
-            // 
-            resources.ApplyResources(this.button_resolve, "button_resolve");
-            this.button_resolve.Name = "button_resolve";
-            this.button_resolve.UseVisualStyleBackColor = true;
-            this.button_resolve.Click += new System.EventHandler(this.Button_Resolve_Click);
             // 
             // button_revoke
             // 
@@ -394,7 +385,6 @@ namespace SubRenamer
         private System.Windows.Forms.Button button_regex_panel;
         private System.Windows.Forms.Button button_autotransfer;
         private System.Windows.Forms.Button button_name2;
-        private System.Windows.Forms.Button button_resolve;
         private System.Windows.Forms.Button button_revoke;
         private System.Windows.Forms.Panel panel_filelist;
         private System.Windows.Forms.TextBox textBox_subExt;

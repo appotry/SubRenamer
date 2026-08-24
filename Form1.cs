@@ -378,27 +378,32 @@ namespace SubRenamer
             Extentions.SetExts(textBox_subExt.Text, Extentions.SUB);
             toolStripProgressBar1.Value = 0;
             DirectoryInfo dInfo = new DirectoryInfo(textBox_path.Text);
-            names = !panel_regex.Visible
-                ? new Names(dInfo)
-                : new Names(dInfo, textBox_video_left.Text, textBox_video_right.Text, textBox_sub_left.Text, textBox_sub_right.Text);
-
-            LoadNames(names);
-            if(sender != null)
-                toolStripStatusLabel1.Text = Resource.load_path_complete + " [" + textBox_path.Text + "]";
-        }
-
-        private void Button_Resolve_Click(object sender, EventArgs e)
-        {
-            if (names != null && NumberResolver.Resolve(names))
+            if (dInfo.Exists)
             {
-                names.Resolved = true;
-                LoadNames(names);
+                try
+                {
+                    names = !panel_regex.Visible
+                        ? new Names(dInfo)
+                        : new Names(dInfo, textBox_video_left.Text, textBox_video_right.Text, textBox_sub_left.Text, textBox_sub_right.Text);
+
+                    LoadNames(names);
+                    if (sender != null)
+                        toolStripStatusLabel1.Text = Resource.load_path_complete + " [" + textBox_path.Text + "]";
+                }
+                catch (Exception ex)
+                {
+                    names = null;                      // 清空对象，防止后续误用
+                    panel_filelist.Controls.Clear();  // 清空界面显示
+                    toolStripStatusLabel1.Text = Resource.load_path_error + " [" + ex.Message + "]";
+                }
+
             }
             else
             {
-                _ = MessageBox.Show(Resource.resolve_fail);
+                toolStripStatusLabel1.Text = Resource.load_path_error + " [" + textBox_path.Text + "]";
             }
         }
+
 
         internal void UpdateButtonRevokeClickable()
         {
@@ -439,10 +444,6 @@ namespace SubRenamer
             if (names.IsRegex)
             {
                 LoadNames_Regex(names);
-            }
-            else if (names.Resolved)
-            {
-                LoadNames_Reslobered(names);
             }
             else
             {
@@ -497,46 +498,6 @@ namespace SubRenamer
                 }
 
                 AddChildrenPanel(videoPanel);
-            }
-        }
-
-        private void LoadNames_Reslobered(Names names)
-        {
-            List<FileInfo> allsubs = new List<FileInfo>();
-            foreach (VSFile var in names.subs)
-            {
-                allsubs.Add(var.File);
-            }
-
-            foreach (Video video in names.videos)
-            {
-                string num = video.Num;
-                if (num == null || num == "")
-                {
-                    continue;
-                }
-                List<FileInfo> subs = Renamer.GetSubList(names, num);
-                Panel panel = CreateNewChildPanel();
-                Label label_v = CreateNewFileLabel(video.File.Name, NAME_VIDEO_LABEL, video.File);
-                AddNewSubLabel(panel, label_v);
-
-                foreach (FileInfo sub in subs)
-                {
-                    Label label_s = CreateNewFileLabel(sub.Name, NAME_SUB_LABEL, sub);
-                    AddNewSubLabel(panel, label_s);
-                    _ = allsubs.Remove(sub);
-                }
-                AddChildrenPanel(panel);
-            }
-
-            Panel panel_1 = CreateNewChildPanel();
-            Label label_v1 = CreateNewFileLabel(Resource.other_sub_filename, NAME_VIDEO_LABEL, null);
-            AddNewSubLabel(panel_1, label_v1);
-            AddChildrenPanel(panel_1);
-            foreach (FileInfo sub in allsubs)
-            {
-                Label label_s = CreateNewFileLabel(sub.Name, NAME_SUB_LABEL, sub);
-                AddNewSubLabel(panel_1, label_s);
             }
         }
 
