@@ -160,15 +160,6 @@ namespace SubRenamer
             return result;
         }
 
-        private static bool HeadSequenceEqual(List<int> pos1, List<int> pos2)
-        {
-            int counnt = Math.Min(pos1.Count, pos2.Count);
-            for (int i = 0; i < counnt; i++)
-            {
-                if (pos1[i] != pos2[i]) return false;
-            }
-            return true;
-        }
 
         /// <summary>
         /// 使用打散后的一组文件名，计算离散度最高的一列作为列名，保存回去
